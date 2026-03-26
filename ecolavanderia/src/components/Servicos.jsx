@@ -41,7 +41,7 @@ const servicos = [
 
 function Servicos() {
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-20 px-4 md:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold text-gray-900 mb-4">
@@ -92,12 +92,12 @@ function Servicos() {
               3 Camisetas por R$ 48,00
             </p>
             <p className="text-gray-600">
-              Lavagem completa com passadoria perfeita
+              Lavagem completa com passadoria perfeita para você!
             </p>
           </div>
         </div>
 
-        <div className="flex mt-12 gap-6">
+        <div className="flex flex-col md:flex-row mt-12 gap-6">
           <div className="flex flex-col p-7 border-2 border-green-200 rounded-2xl bg-white">
             <div className="flex items-center gap-4">
               <Leaf className="w-8 h-8 text-green-600 mb-4" />

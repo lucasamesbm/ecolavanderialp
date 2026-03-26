@@ -2,9 +2,9 @@ import HeroImage from "../assets/imagens/fundoeco.png";
 
 function Hero() {
   return (
-    <section className="pt-35 pb-10 bg-linear-to-br from-green-50 to-white">
+    <section className="pt-35 pb-10 px-4 md:px-6 lg:px-8 bg-linear-to-br from-green-50 to-white">
       <div className="max-w-7xl mx-auto">
-        <div className="flex gap-12 items-center">
+        <div className="flex flex-col md:flex-row gap-12 items-center">
           <div className="flex flex-col space-y-8">
             <h1 className="text-6xl font-bold leading-tight text-gray-900">
               Roupas limpas respeitando o meio ambiente

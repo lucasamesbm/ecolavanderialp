@@ -1,11 +1,13 @@
 import { Star } from "lucide-react";
+import img1 from "../assets/imagens/cliente1.png";
+import img2 from "../assets/imagens/cliente2.png";
+import img3 from "../assets/imagens/cliente3.png";
 
 const clientes = [
   {
     nome: "Lygia Pereira",
     avaliacaoTexto: "Avaliação pelo Google",
-    imagem:
-      "https://lh3.googleusercontent.com/a-/ALV-UjWLPhQHZL9lllUDoMbPpZYHajV7kOqg58xOlmZyiPbBNRClO9vg3Q=w72-h72-p-rp-mo-br100",
+    imagem: img1,
     texto:
       "Ótimo atendimento, comprometidos, e oferecem um perfume maravilhoso nas roupas! Além de ser Eco!",
     avaliacao: 5,
@@ -13,16 +15,14 @@ const clientes = [
   {
     nome: "Fabiana R Corrêa",
     avaliacaoTexto: "Avaliação pelo Google",
-    imagem:
-      "https://lh3.googleusercontent.com/a-/ALV-UjUBgGDbRYcqfURT2WMOMhqzD_YXywNdAlKaVx1QHRtn39YPL5g=w72-h72-p-rp-mo-ba4-br100",
+    imagem: img2,
     texto: "Exelente serviço",
     avaliacao: 5,
   },
   {
     nome: "Gisa Hanryluk",
     avaliacaoTexto: "Avaliação pelo Google",
-    imagem:
-      "https://lh3.googleusercontent.com/a-/ALV-UjXwgSX3Zhv8UjNobWOC4IfZND_HoSFdayRBq2gIi7Iyj4aKhV8IRw=w72-h72-p-rp-mo-br100",
+    imagem: img3,
     texto: "Excelente trabalho",
     avaliacao: 5,
   },
@@ -30,7 +30,7 @@ const clientes = [
 
 function Clientes() {
   return (
-    <section className="bg-white py-20 px-5">
+    <section className="bg-white py-20 px-4 md:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-15">
           <h2 className="text-5xl font-bold text-gray-900 mb-4">
