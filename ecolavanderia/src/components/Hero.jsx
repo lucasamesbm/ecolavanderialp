@@ -47,7 +47,7 @@ function Hero() {
                 className="w-280 h-125 object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
+            <div className="absolute -bottom-8 -left-1 bg-white p-6 rounded-xl shadow-lg">
               <div className="text-sm text-gray-600">Tecnologia</div>
               <div className="text-2xl font-bold text-green-600">
                 Wet-Cleaning

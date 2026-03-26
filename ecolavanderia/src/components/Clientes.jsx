@@ -34,7 +34,7 @@ function Clientes() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-15">
           <h2 className="text-5xl font-bold text-gray-900 mb-4">
-            O Que Dizem Nossos Clientes
+            O Que Nossos Clientes Dizem
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Mais de 10 mil clientes satisfeitos confiam em nosso serviço

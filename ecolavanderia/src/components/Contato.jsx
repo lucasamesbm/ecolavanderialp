@@ -41,7 +41,7 @@ Mensagem: ${form.message || "Não informado."}`;
   );
 
   return (
-    <section className="py-20 px-4 md:px-6 lg:px-8 bg-white">
+    <section id="contatos" className="py-20 px-4 md:px-6 lg:px-8 bg-white scroll-mt-16">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-15">
           <h2 className="font-bold text-5xl text-gray-900 mb-4">

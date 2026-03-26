@@ -72,7 +72,7 @@ function PassoCard({ passo, index }) {
 
   return (
     //ref para localizar o card e relative para posicionamento interno
-    <div ref={ref} className="relative">
+    <div id="comofunciona" ref={ref} className="relative scroll-mt-80">
       {/* inicio do container*/}
       <motion.div
         style={

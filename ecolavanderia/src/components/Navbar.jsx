@@ -18,19 +18,19 @@ function Navbar() {
 
         <ul className=" hidden md:flex text-lg gap-6 font-semibold text-gray-600">
           <li className="hover:text-green-600 transition-colors">
-            <a href="#">Serviços</a>
+            <a href="#servicos">Serviços</a>
           </li>
           <li className="hover:text-green-600 transition-colors">
-            <a href="#">Como Funciona</a>
+            <a href="#comofunciona">Como Funciona</a>
           </li>
           <li className="hover:text-green-600 transition-colors">
-            <a href="#">Preços</a>
+            <a href="#precos">Preços</a>
           </li>
           <li className="hover:text-green-600 transition-colors">
-            <a href="#">Localização</a>
+            <a href="#loc">Localização</a>
           </li>
           <li className="hover:text-green-600 transition-colors">
-            <a href="#">Contatos</a>
+            <a href="#contatos">Contatos</a>
           </li>
         </ul>
 
@@ -73,27 +73,27 @@ function Navbar() {
       >
         <ul className="flex flex-col gap-4 text-lg font-semibold text-gray-600">
           <li>
-            <a href="#" onClick={() => setMenuOpen(false)}>
+            <a href="#servicos" onClick={() => setMenuOpen(false)}>
               Serviços
             </a>
           </li>
           <li>
-            <a href="#" onClick={() => setMenuOpen(false)}>
+            <a href="#comofunciona" onClick={() => setMenuOpen(false)}>
               Como Funciona
             </a>
           </li>
           <li>
-            <a href="#" onClick={() => setMenuOpen(false)}>
+            <a href="#precos" onClick={() => setMenuOpen(false)}>
               Preços
             </a>
           </li>
           <li>
-            <a href="#" onClick={() => setMenuOpen(false)}>
+            <a href="#loc" onClick={() => setMenuOpen(false)}>
               Localização
             </a>
           </li>
           <li>
-            <a href="#" onClick={() => setMenuOpen(false)}>
+            <a href="#contatos" onClick={() => setMenuOpen(false)}>
               Contatos
             </a>
           </li>

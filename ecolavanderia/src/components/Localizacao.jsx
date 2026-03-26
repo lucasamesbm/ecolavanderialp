@@ -2,7 +2,7 @@ import { MapPin, Car, Clock, Navigation } from "lucide-react";
 
 function Localizacao() {
   return (
-    <section className="py-20 px-4 md:px-6 lg:px-8 bg-linear-to-br from-green-50 to-white">
+    <section id="loc"className="py-20 px-4 md:px-6 lg:px-8 bg-linear-to-br from-green-50 to-white scroll-mt-16">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-15">
           <h2 className="font-bold text-5xl text-gray-900 mb-4">
