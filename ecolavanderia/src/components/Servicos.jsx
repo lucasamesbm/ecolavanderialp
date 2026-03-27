@@ -1,4 +1,6 @@
 import { Shirt, Sparkles, Droplet, Wind, Package, Leaf } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const servicos = [
   {
@@ -40,8 +42,50 @@ const servicos = [
 ];
 
 function Servicos() {
+  const isMobile = window.innerWidth < 768;
+
+  const refLeft = useRef(null);
+  const refRight = useRef(null);
+
+  const isLeftInView = useInView(refLeft, {
+    once: true,
+    amount: 0.3,
+  });
+
+  const isRightInView = useInView(refRight, {
+    once: true,
+    amount: 0.3,
+  });
+
+  const container = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.2, // tempo entre cada card
+      },
+    },
+  };
+
+  const card = {
+    hidden: {
+      scale: 1,
+      y: 0,
+    },
+    show: {
+      scale: [1, 1.05, 1], // ativa e volta
+      y: [0, -5, 0],
+      transition: {
+        duration: 0.6,
+        ease: "easeInOut",
+      },
+    },
+  };
+
   return (
-    <section id="servicos" className="scroll-mt-16 py-20 px-4 md:px-6 lg:px-8 bg-white">
+    <section
+      id="servicos"
+      className="scroll-mt-16 py-20 px-4 md:px-6 lg:px-8 bg-white"
+    >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold text-gray-900 mb-4">
@@ -52,8 +96,14 @@ function Servicos() {
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-6">
-          <div className="flex flex-col p-7 border-2 border-green-200 rounded-2xl bg-white">
+        <div className="flex flex-col md:flex-row gap-6 overflow-hidden">
+          <motion.div
+            ref={refLeft}
+            initial={{ x: -200, opacity: 0 }}
+            animate={isLeftInView ? { x: 0, opacity: 1 } : {}}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            className="flex flex-col p-7 border-2 border-green-200 rounded-2xl bg-white"
+          >
             <div className="flex items-center gap-4">
               <Leaf className="w-8 h-8 text-green-600 mb-4" />
               <h4 className="text-2xl font-bold mb-4">Wet-Cleaning</h4>
@@ -91,8 +141,14 @@ function Servicos() {
                 <p className="font-semibold text-green-600">R$ 59,00</p>
               </div>
             </div>
-          </div>
-          <div className="bg-white flex flex-col p-7 border-2 border-green-200 rounded-2xl">
+          </motion.div>
+          <motion.div
+            ref={refRight}
+            initial={{ x: isMobile ? -200 : 200, opacity: 0 }}
+            animate={isRightInView ? { x: 0, opacity: 1 } : {}}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            className="bg-white flex flex-col p-7 border-2 border-green-200 rounded-2xl"
+          >
             <div className="flex items-center gap-4">
               <Sparkles className="w-8 h-8 text-green-600 mb-4" />
               <h4 className="text-2xl font-bold mb-4">Produtos SEITZ</h4>
@@ -110,10 +166,13 @@ function Servicos() {
               desenvolvendo novos produtos e métodos para lavanderia, visando
               beneficiar e facilitar o trabalho de limpeza das roupas.
             </p>
-          </div>
+          </motion.div>
         </div>
 
-        <div id="precos" className="bg-linear-to-br from-green-50 to-green-100 p-8 rounded-2xl border-2 border-green-200 mt-12 scroll-mt-28">
+        <div
+          id="precos"
+          className="bg-linear-to-br from-green-50 to-green-100 p-8 rounded-2xl border-2 border-green-200 mt-12 scroll-mt-28"
+        >
           <div className="flex items-center gap-4 mb-4">
             <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center">
               <Sparkles className="w-8 h-8 text-white" />
@@ -135,10 +194,16 @@ function Servicos() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12"
+        >
           {servicos.map((servico, index) => (
-            <div
+            <motion.div
               key={index}
+              variants={card}
               className="p-8 rounded-xl border-2 border-gray-100 hover:border-green-200 hover:shadow-lg transition-all group"
             >
               <div className="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-600 transition-colors">
@@ -154,9 +219,9 @@ function Servicos() {
               <div className="text-2xl font-bold text-green-600">
                 {servico.preco}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -22,7 +22,7 @@ function Footer() {
               <img
                 src={img}
                 alt="Logo Eco Lavanderia"
-                className=" h-18 max-w-full border-2 rounded-lg px-8 py-4 bg-white"
+                className=" h-15 max-w-full border-2 rounded-lg px-8 py-4 bg-white"
               />
             </div>
             <p className="text-gray-400 mb-4">
