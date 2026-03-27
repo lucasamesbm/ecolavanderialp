@@ -1,6 +1,6 @@
 import { Shirt, Sparkles, Droplet, Wind, Package, Leaf } from "lucide-react";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const servicos = [
   {
@@ -57,29 +57,33 @@ function Servicos() {
     amount: 0.3,
   });
 
-  const container = {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.2, // tempo entre cada card
-      },
-    },
-  };
+  const gridRef = useRef(null);
 
-  const card = {
-    hidden: {
-      scale: 1,
-      y: 0,
-    },
-    show: {
-      scale: [1, 1.05, 1], // ativa e volta
-      y: [0, -5, 0],
-      transition: {
-        duration: 0.6,
-        ease: "easeInOut",
-      },
-    },
-  };
+  const isGridInView = useInView(gridRef, {
+    once: true,
+    amount: 0.1,
+  });
+
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  useEffect(() => {
+    if (!isGridInView) return;
+
+    let i = 0;
+
+    const interval = setInterval(() => {
+      setActiveIndex(i);
+
+      setTimeout(() => {
+        setActiveIndex(null);
+      }, 600);
+
+      i++;
+      if (i > servicos.length - 1) clearInterval(interval);
+    }, 800);
+
+    return () => clearInterval(interval);
+  }, [isGridInView]);
 
   return (
     <section
@@ -194,34 +198,51 @@ function Servicos() {
           </div>
         </div>
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
+        <div
+          ref={gridRef}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12"
         >
-          {servicos.map((servico, index) => (
-            <motion.div
-              key={index}
-              variants={card}
-              className="p-8 rounded-xl border-2 border-gray-100 hover:border-green-200 hover:shadow-lg transition-all group"
-            >
-              <div className="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-600 transition-colors">
-                <servico.icon className="w-7 h-7 text-green-600 group-hover:text-white transition-colors" />
+          {servicos.map((servico, index) => {
+            const isActive = activeIndex === index;
+
+            return (
+              <div
+                key={index}
+                className={`p-8 rounded-xl border-2 transition-all duration-300 group
+    border-gray-100
+    hover:border-green-200 hover:shadow-lg
+    ${isActive ? "border-green-200 shadow-lg" : ""}
+  `}
+              >
+                <div
+                  className={`w-14 h-14 rounded-lg flex items-center justify-center mb-6 transition-colors duration-300
+    bg-green-100
+    group-hover:bg-green-600
+    ${isActive ? "bg-green-600" : ""}
+  `}
+                >
+                  <servico.icon
+                    className={`w-7 h-7 transition-colors duration-300
+    text-green-600
+    group-hover:text-white
+    ${isActive ? "text-white" : ""}
+  `}
+                  />
+                </div>
+
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  {servico.titulo}
+                </h3>
+
+                <p className="text-gray-600 mb-4">{servico.descricao}</p>
+
+                <div className="text-2xl font-bold text-green-600">
+                  {servico.preco}
+                </div>
               </div>
-
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
-                {servico.titulo}
-              </h3>
-
-              <p className="text-gray-600 mb-4">{servico.descricao}</p>
-
-              <div className="text-2xl font-bold text-green-600">
-                {servico.preco}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
